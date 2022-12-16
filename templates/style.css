@@ -1,0 +1,17 @@
+.round {
+    border: solid 1px black;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+}
+
+html {
+    background-color: rgb(255, 241, 220);
+}
+
+h1 {
+    color:green
+}
+th {
+    color: blue
+}
