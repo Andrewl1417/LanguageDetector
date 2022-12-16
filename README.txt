@@ -17,6 +17,8 @@ YouTube Demo Video - https://youtu.be/X0gqi8Gygbs
 
 
 ---------------------------------------------------------------------------------------------------
-To run this program users would need to:
+Hosted website: https://wild-jade-hummingbird-veil.cyclic.app 
+
+To run this program locally users would need to:
     Copy and paste this line below in the terminal (same directory as the project):
     GOOGLE_APPLICATION_CREDENTIALS="./credentials/key.json" node code.js 
