@@ -20,7 +20,16 @@ app.set("view engine", "ejs")
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(express.static(__dirname + '/templates'));
 const translate = new Translate();
+process.env.GOOGLE_APPLICATION_CREDENTIALS = "./credentials/key.json"
+const {GoogleAuth} = require('google-auth-library');
 
+async function authorize() {
+    const auth = new GoogleAuth({
+      scopes: ['https://www.googleapis.com/auth/cloud-platform']
+    });
+    const client2 = await auth.getClient();
+    return client2;
+  }
 
 console.log(`Web server started and running at http://localhost:${portNumber}`)
 process.stdout.write(`Stop to shutdown the server: `)
@@ -50,6 +59,7 @@ app.get("/detectLanguage", (request, response) => {
 
 app.post("/processLanguage", async (request, response) => {
     try {
+        const client2 = await authorize()
         const [languages] = await translate.getLanguages();
         let lang= ``;
         let {sentence} = request.body;
@@ -81,6 +91,7 @@ app.post("/processLanguage", async (request, response) => {
 
 app.get("/supportedLanguage", async (request, response) => {
     // Lists available translation language with their names in English (the default).
+    const client2 = await authorize()
     const [languages] = await translate.getLanguages();
     let result = '<table border="1px solid black">';
     result += '<tr><th>Languages</th></tr>';
