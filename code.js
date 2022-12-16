@@ -5,7 +5,7 @@ const fs = require("fs")
 const express = require("express");   
 const app = express();
 const bodyParser = require("body-parser");
-require("dotenv").config({ path: path.resolve(__dirname, 'credentials/.env') })
+require("dotenv").config({ path: path.resolve(__dirname, '.gitignore/credentials/.env') })
 process.stdin.setEncoding("utf8");
 
 const portNumber = 5002;
@@ -20,7 +20,7 @@ app.set("view engine", "ejs")
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(express.static(__dirname + '/templates'));
 const translate = new Translate();
-process.env.GOOGLE_APPLICATION_CREDENTIALS = "./credentials/key.json"
+process.env.GOOGLE_APPLICATION_CREDENTIALS = "./.gitignore/credentials/key.json"
 // const {GoogleAuth} = require('google-auth-library');
 
 // async function authorize() {
